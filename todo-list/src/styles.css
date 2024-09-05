@@ -9,6 +9,15 @@ body {
     height: 100vh;
 }
 
+.inputBox{
+    display:flex
+}
+#dropDown{
+    padding:10px;
+    border-radius: 8px;
+}
+
+
 .container {
     background-color: #fff;
     padding: 20px;

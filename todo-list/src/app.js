@@ -6,6 +6,17 @@ document.getElementById('add-task').addEventListener('click', function () {
     const li = document.createElement('li');
     li.textContent = taskText;
 
+    const priority=document.getElementById('dropDown');
+    const value=priority.value;
+    if (value === "Less") {
+        li.style.backgroundColor = "lightgreen";
+      } else if (value === "Medium") {
+        li.style.backgroundColor = "orange";
+      } else if (value === "High") {
+        li.style.backgroundColor = "OrangeRed";
+      }
+
+
     const completeBtn = document.createElement('button');
     completeBtn.textContent = 'Complete';
     completeBtn.addEventListener('click', function () {
