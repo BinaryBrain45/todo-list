@@ -4,27 +4,35 @@ document.getElementById('add-task').addEventListener('click', function () {
     if (taskText === '') return;
 
     const li = document.createElement('li');
-    li.textContent = taskText;
 
-    const priority=document.getElementById('dropDown');
-    const value=priority.value;
+    // Create a span to wrap the task text
+    const taskSpan = document.createElement('span');
+    taskSpan.textContent = taskText;
+    li.appendChild(taskSpan);
+
+    // Assign priority-based classes
+    const priority = document.getElementById('dropDown');
+    const value = priority.value;
     if (value === "Less") {
-        li.style.backgroundColor = "lightgreen";
-      } else if (value === "Medium") {
-        li.style.backgroundColor = "orange";
-      } else if (value === "High") {
-        li.style.backgroundColor = "OrangeRed";
-      }
+        li.classList.add("less-level");
+    } else if (value === "Medium") {
+        li.classList.add("medium-level");
+    } else if (value === "High") {
+        li.classList.add("high-level");
+    }
 
-
+    // Complete button
     const completeBtn = document.createElement('button');
     completeBtn.textContent = 'Complete';
+    completeBtn.classList.add('complete-btn');
     completeBtn.addEventListener('click', function () {
         li.classList.toggle('completed');
     });
 
+    // Delete button
     const deleteBtn = document.createElement('button');
     deleteBtn.textContent = 'Delete';
+    deleteBtn.classList.add('delete-btn');
     deleteBtn.addEventListener('click', function () {
         li.remove();
     });
@@ -35,3 +43,16 @@ document.getElementById('add-task').addEventListener('click', function () {
     document.getElementById('tasks').appendChild(li);
     taskInput.value = '';
 });
+
+const toggleDarkMode =()=>{
+    const body = document.body;
+    const modeIcon = document.getElementById("mode-icon");
+
+    body.classList.toggle("dark-mode");
+
+    if (body.classList.contains("dark-mode")) {
+        modeIcon.textContent = "☀️";
+    } else {
+        modeIcon.textContent = "🌙";
+    }
+}
